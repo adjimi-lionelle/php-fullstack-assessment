@@ -40,4 +40,17 @@ class BrandRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+
+     public function findBycountry($countryCode): array
+     {
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 ORDER BY brand_id DESC';
+        $sqlPrepare = $connexion->prepare($sql);
+        $result = $sqlPrepare->executeQuery([
+            'countryCode' => json_encode($countryCode)
+        ]) ;
+        return $result->fetchAllAssociative();
+     }
+
 }

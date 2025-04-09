@@ -6,6 +6,7 @@ use App\Repository\BrandRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BrandRepository::class)]
 class Brand
@@ -13,18 +14,23 @@ class Brand
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(name:"brand_id")]
+    #[Groups('brand:read')]
     private ?int $brandId = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('brand:read')]
     private ?string $brandName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('brand:read')]
     private ?string $brandImage = null;
 
     #[ORM\Column]
+    #[Groups('brand:read')]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::JSON)]
+    #[Groups('brand:read')]
     private array $targetCountries = [];
 
     #[ORM\Column]
