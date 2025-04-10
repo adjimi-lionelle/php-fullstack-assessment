@@ -2,6 +2,7 @@
 Dockerfile
 docker-compose.yml
 #docker/
+.env
 
 # Symfony vendor dependencies
 /vendor

@@ -27,7 +27,7 @@ final class BrandApiController extends AbstractController
     #[Route('bestRated', name: 'api_brand_list_bestRated', methods:['GET'])]
     public function index(Request $request, SerializerInterface $serializer ): JsonResponse
     {
-        $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
+        $countryCode = $request->headers->get('CF-IPCountry') ?? 'CM';
 
         $brands = $this->repository->findByCountryAndBestRated($countryCode);
     
@@ -63,7 +63,7 @@ final class BrandApiController extends AbstractController
     }
 
     // List of brands by country code
-    #[Route('', name: 'api_brand_list', methods:['GET'])]
+    #[Route('default', name: 'api_brand_list', methods:['GET'])]
     public function brandByCountryCode(Request $request, SerializerInterface $serializer ): JsonResponse
     {
         $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
@@ -144,5 +144,16 @@ final class BrandApiController extends AbstractController
         return $this->json(['message' => 'Brand successfully updated'], 200);
     }
 
-
+    #[Route('search', name: 'api_brand_search', methods: ['GET'])]
+    public function search(Request $request, SerializerInterface $serializer): JsonResponse
+    {
+        $word = $request->query->get('word', '');
+    
+        $brands = $this->repository->searchWord($word);
+    
+        $data = $serializer->normalize($brands, null, ['groups' => 'brand:read']);
+    
+        return $this->json($data, 200);
+    }
+    
 }

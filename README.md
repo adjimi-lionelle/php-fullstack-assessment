@@ -19,8 +19,10 @@
    git clone https://github.com/adjimi-lionelle/php-fullstack-assessment.git
    cd php-fullstack-assessment
    ```
+   
 2. Install PHP dependencies
     ```bash
+    cd ..
     composer install
      ```
 3. Configure the
@@ -47,6 +49,9 @@
 8. Launch the application
     ```bash
       symfony server:start
+      If an error occurs with the script.sh file, run
+      cd docker
+      chmod +x script.sh
     ```   
 9. Access the application
     ```bash
@@ -72,3 +77,7 @@
     ```bash
       http://127.0.0.1:8081
     ```    
+5. Sto the containers
+    ```bash 
+      docker-compose down
+    ```
