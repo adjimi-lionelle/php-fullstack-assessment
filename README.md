@@ -19,16 +19,15 @@
    git clone https://github.com/adjimi-lionelle/php-fullstack-assessment.git
    cd php-fullstack-assessment
    ```
-   
-2. Install PHP dependencies
-    ```bash
-    cd ..
-    composer install
-     ```
-3. Configure the
+2. Configure the
     ```bash
       cp .env.example .env
     ```
+3. Install PHP dependencies
+    ```bash
+    cd ..
+    composer install
+     ```   
 4. Modify the MYSQL connection line according to your local configuration
     ```bash
       DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app”
@@ -41,7 +40,6 @@
     ```bash
       php bin/console doctrine:migrations:migrate
     ```
-
 7. Load fixtures
     ```bash
       php bin/console doctrine:fixture:load
