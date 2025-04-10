@@ -12,6 +12,34 @@ class BrandFixtures extends Fixture
     {
         $brands = [
             [
+                'brandName' => 'Mercedes-Benz',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg',
+                'rating' => 3,
+                'tragetCountries' => ['FR', 'DE', 'CM'],
+                'type' => 'new'
+            ],
+            [
+                'brandName' => 'Orange',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
+                'rating' => 2,
+                'tragetCountries' => ['SN', 'CM', 'FR'],
+                'type' => 'new'
+            ],
+            [
+                'brandName' => 'Toyota',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
+                'rating' => 4,
+                'tragetCountries' => ['FR', 'CM', 'US'],
+                'type' => 'default'
+            ],
+            [
+                'brandName' => 'MtN',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
+                'rating' => 3,
+                'tragetCountries' => ['FR', 'CM', 'NR'],
+                'type' => 'default'
+            ],
+            [
                 'brandName' => 'Samsung',
                 'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg',
                 'rating' => 3,
@@ -44,34 +72,6 @@ class BrandFixtures extends Fixture
                 'rating' => 5,
                 'tragetCountries' => ['FR', 'CM', 'US'],
                 'type' => 'bestRated'
-            ],
-            [
-                'brandName' => 'Mercedes-Benz',
-                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg',
-                'rating' => 3,
-                'tragetCountries' => ['FR', 'DE', 'CM'],
-                'type' => 'new'
-            ],
-            [
-                'brandName' => 'Orange',
-                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
-                'rating' => 2,
-                'tragetCountries' => ['SN', 'CM', 'FR'],
-                'type' => 'new'
-            ],
-            [
-                'brandName' => 'Toyota',
-                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
-                'rating' => 4,
-                'tragetCountries' => ['FR', 'CM', 'US'],
-                'type' => 'default'
-            ],
-            [
-                'brandName' => 'MtN',
-                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
-                'rating' => 3,
-                'tragetCountries' => ['FR', 'CM', 'NR'],
-                'type' => 'default'
             ],
             
         ];

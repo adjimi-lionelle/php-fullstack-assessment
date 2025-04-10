@@ -75,7 +75,11 @@
     ```bash
       http://127.0.0.1:8081
     ```    
-5. Sto the containers
+5. Stop the containers
     ```bash 
       docker-compose down
     ```
+5. Access the container app
+    ```bash 
+      docker exec -it app bash
+    ```    
