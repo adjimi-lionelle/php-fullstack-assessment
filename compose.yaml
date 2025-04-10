@@ -4,8 +4,10 @@ services:
   app:
     build: .
     container_name: app
+    expose:
+      - '9000'
     volumes:
-      - .:/var/www/html
+      - .:/var/www
     depends_on:
       - mysql
     environment:

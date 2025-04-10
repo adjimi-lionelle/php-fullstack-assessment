@@ -74,7 +74,8 @@ final class BrandApiController extends AbstractController
         return $this->json($data, 200);
         
     }
-
+    
+    // Create brand
     #[Route('create', name: 'api_brand_create', methods:['POST'])]
     public function create(Request $request): JsonResponse
     {
@@ -95,10 +96,10 @@ final class BrandApiController extends AbstractController
         return $this->json(['message' => 'Brand successfully created'], 201);
     }
 
+    // Delete brand
     #[Route('{id}/delete', name: 'api_brand_delete', methods:['DELETE'])]
     public function delete(Brand $brand): JsonResponse
     {
-      //  var_dump($brand);
         $this->em->remove($brand);
         $this->em->flush();
 
@@ -112,6 +113,7 @@ final class BrandApiController extends AbstractController
         return $this->json($brand, 200, [], ['groups' => 'brand:read']);
     }
 
+    // Update brand
     #[Route('{id}/update', name: 'api_brand_update', methods: ['PUT'])]
     public function update(Request $request, Brand $brand): JsonResponse
     {

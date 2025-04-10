@@ -1,23 +1,22 @@
 #!/bin/bash
-set -e  # Arrêter le script si une commande échoue
+set -e
 
-# Installer les dépendances Composer (avec celles de développement)
+# Install PHP dependencies
 composer install
 
-# Créer la base de données si elle n'existe pas encore
+# Create the database 
 php bin/console doctrine:database:create --if-not-exists
 
-# Générer un fichier de migration s'il n'y en a pas
+# Generate a migration file if none exists
 if [ ! -d "migrations" ] || [ -z "$(ls -A migrations)" ]; then
-    echo "Aucune migration trouvée, génération d'une nouvelle migration..."
     php bin/console make:migration
 fi
 
-# Appliquer les migrations de la base de données
+# Apply database migrations
 php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
 
-# Charger les fixtures
+# Load fixtures
 php bin/console doctrine:fixture:load --no-interaction
 
-# Démarrer PHP-FPM pour exécuter l'application Symfony
+# Start PHP-FPM to run the Symfony application
 php-fpm
