@@ -1,0 +1,27 @@
+# Docker-specific files
+Dockerfile
+docker-compose.yml
+#docker/
+
+# Symfony vendor dependencies
+/vendor
+
+# Logs and temporary files
+/var
+!var/.gitkeep
+#/migrations
+
+# Environment configuration files
+
+.env.test
+
+# PHPUnit test files
+/phpunit.xml.dist
+.phpunit.result.cache
+
+# Git files
+.git
+.gitignore
+
+# Miscellaneous auto-generated files
+.htaccess
