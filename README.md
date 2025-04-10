@@ -79,7 +79,7 @@
     ```bash 
       docker-compose down
     ```
-5. Access the container app
+5. Access the app container
     ```bash 
       docker exec -it app bash
     ```    
