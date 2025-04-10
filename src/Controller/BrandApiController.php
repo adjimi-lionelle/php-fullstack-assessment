@@ -22,20 +22,60 @@ final class BrandApiController extends AbstractController
     {
         
     }
-
-    #[Route('', name: 'api_brand_list', methods:['GET'])]
+     
+    // List of brands by country code and  type bestRated
+    #[Route('bestRated', name: 'api_brand_list_bestRated', methods:['GET'])]
     public function index(Request $request, SerializerInterface $serializer ): JsonResponse
     {
-        $countryCode = $request->headers->get('CF-IPCountry') ?? 'US';
+        $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
 
-        $brands = $this->repository->findBycountry($countryCode);
+        $brands = $this->repository->findByCountryAndBestRated($countryCode);
+    
+        $data = $serializer->normalize($brands, null, ['groups' => 'brand:read']);
+        return $this->json($data, 200);
+        
+    }
+    
+    // List of brands by country code and  type new
+    #[Route('new', name: 'api_brand_list_new', methods:['GET'])]
+    public function brandsByNew(Request $request, SerializerInterface $serializer ): JsonResponse
+    {
+        $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
+
+        $brands = $this->repository->findByCountryAndNew($countryCode);
     
         $data = $serializer->normalize($brands, null, ['groups' => 'brand:read']);
         return $this->json($data, 200);
         
     }
 
-    #[Route('new', name: 'api_brand_create', methods:['POST'])]
+    // List of brands by country code and  type featured
+    #[Route('featured', name: 'api_brand_list_featured', methods:['GET'])]
+    public function brandsByFeatured(Request $request, SerializerInterface $serializer ): JsonResponse
+    {
+        $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
+
+        $brands = $this->repository->findByCountryAndFeatured($countryCode);
+    
+        $data = $serializer->normalize($brands, null, ['groups' => 'brand:read']);
+        return $this->json($data, 200);
+        
+    }
+
+    // List of brands by country code
+    #[Route('', name: 'api_brand_list', methods:['GET'])]
+    public function brandByCountryCode(Request $request, SerializerInterface $serializer ): JsonResponse
+    {
+        $countryCode = $request->headers->get('CF-IPCountry') ?? 'FR';
+
+        $brands = $this->repository->findByCountryCode($countryCode);
+    
+        $data = $serializer->normalize($brands, null, ['groups' => 'brand:read']);
+        return $this->json($data, 200);
+        
+    }
+
+    #[Route('create', name: 'api_brand_create', methods:['POST'])]
     public function create(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);

@@ -41,16 +41,56 @@ class BrandRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-
-     public function findBycountry($countryCode): array
+    // Liste des marques en fonction du code pays et du type featured
+     public function findByCountryAndFeatured($countryCode): array
      {
         $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 ORDER BY brand_id DESC';
+        $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 AND type = :type ORDER BY brand_id DESC';
         $sqlPrepare = $connexion->prepare($sql);
         $result = $sqlPrepare->executeQuery([
-            'countryCode' => json_encode($countryCode)
-        ]) ;
+            'countryCode' => json_encode($countryCode),
+            'type' => "featured"
+        ]) ; 
         return $result->fetchAllAssociative();
      }
+
+     // Liste des marques en fonction du code pays et du type bestRated
+     public function findByCountryAndBestRated($countryCode): array
+     {
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 AND type = :type ORDER BY brand_id DESC';
+        $sqlPrepare = $connexion->prepare($sql);
+        $result = $sqlPrepare->executeQuery([
+            'countryCode' => json_encode($countryCode),
+            'type' => "bestRated"
+        ]) ; 
+        return $result->fetchAllAssociative();
+     }
+
+      // Liste des marques en fonction du code pays et du type new
+      public function findByCountryAndNew($countryCode): array
+      {
+         $connexion = $this->getEntityManager()->getConnection();
+         $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 AND type = :type ORDER BY brand_id DESC';
+         $sqlPrepare = $connexion->prepare($sql);
+         $result = $sqlPrepare->executeQuery([
+             'countryCode' => json_encode($countryCode),
+             'type' => "new"
+         ]) ; 
+         return $result->fetchAllAssociative();
+      }
+
+      // Liste des marques en fonction du code pays
+      public function findByCountryCode($countryCode): array
+      {
+         $connexion = $this->getEntityManager()->getConnection();
+         $sql = 'SELECT * FROM brand WHERE JSON_CONTAINS(target_countries, :countryCode) = 1 AND type!= :exclusType ORDER BY brand_id DESC';
+         $sqlPrepare = $connexion->prepare($sql);
+         $result = $sqlPrepare->executeQuery([
+             'countryCode' => json_encode($countryCode),
+             'exclusType' => 'featured'
+         ]) ; 
+         return $result->fetchAllAssociative();
+      }
 
 }

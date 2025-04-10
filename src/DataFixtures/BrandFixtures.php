@@ -12,65 +12,67 @@ class BrandFixtures extends Fixture
     {
         $brands = [
             [
-                'brandName' => 'Coca-Cola',
-                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
-                'rating' => 4,
-                'tragetCountries' => ['FR', 'CM', 'US']
+                'brandName' => 'Samsung',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg',
+                'rating' => 3,
+                'tragetCountries' => ['KR', 'RU', 'IN'],
+                'type' => 'new'
             ],
             [
                 'brandName' => 'Apple',
                 'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
-                'rating' => 5,
-                'tragetCountries' => ['FR', 'JP', 'US']
+                'rating' => 4,
+                'tragetCountries' => ['FR', 'JP', 'US'],
+                'type' => 'featured'
             ],
             [
                 'brandName' => 'Google',
                 'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
                 'rating' => 5,
-                'tragetCountries' => ['CA', 'IN', 'US']
+                'tragetCountries' => ['CA', 'IN', 'US'],
+                'type' => 'featured'
             ],
             [
                 'brandName' => 'Amazon',
                 'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
                 'rating' => 5,
-                'tragetCountries' => ['DE', 'IN', 'UK']
-            ],
-           /* [
-                'brandName' => 'Orange',
-                'brandImage' => '',
-                'rating' => 2,
-                'tragetCountries' => ['SN', 'CM', 'FR']
-            ],
-            [
-                'brandName' => 'Samsung',
-                'brandImage' => '',
-                'rating' => 3,
-                'tragetCountries' => ['KR', 'RU', 'IN']
-            ],
-            [
-                'brandName' => 'Toyota',
-                'brandImage' => '',
-                'rating' => 4,
-                'tragetCountries' => ['JP', 'JP', 'US']
-            ],
-            [
+                'tragetCountries' => ['DE', 'IN', 'UK'],
+                'type' => 'featured'
+            ],[
                 'brandName' => 'Microsoft',
-                'brandImage' => '',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
                 'rating' => 5,
-                'tragetCountries' => ['FR', 'CA', 'US']
-            ],
-            [
-                'brandName' => 'MtN',
-                'brandImage' => '',
-                'rating' => 3,
-                'tragetCountries' => ['GH', 'CM', 'NR']
+                'tragetCountries' => ['FR', 'CA', 'US'],
+                'type' => 'bestRated'
             ],
             [
                 'brandName' => 'Mercedes-Benz',
-                'brandImage' => '',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg',
+                'rating' => 3,
+                'tragetCountries' => ['FR', 'DE', 'IT'],
+                'type' => 'new'
+            ],
+            [
+                'brandName' => 'Orange',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
                 'rating' => 2,
-                'tragetCountries' => ['FR', 'DE', 'IT']
-            ],*/
+                'tragetCountries' => ['SN', 'CM', 'FR'],
+                'type' => 'new'
+            ],
+            [
+                'brandName' => 'Toyota',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
+                'rating' => 4,
+                'tragetCountries' => ['JP', 'JP', 'US'],
+                'type' => 'default'
+            ],
+            [
+                'brandName' => 'MtN',
+                'brandImage' => 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg',
+                'rating' => 3,
+                'tragetCountries' => ['GH', 'CM', 'NR'],
+                'type' => 'default'
+            ],
             
         ];
 
@@ -79,6 +81,7 @@ class BrandFixtures extends Fixture
             $brand->setBrandName($data['brandName']);
             $brand->setBrandImage($data['brandImage']);
             $brand->setRating($data['rating']);
+            $brand->setType($data['type']);
             $brand->setTargetCountries($data['tragetCountries']);
             $manager->persist($brand);
         }
